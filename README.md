@@ -27,21 +27,28 @@ The project uses the Factory pattern for extensibility:
 
 ## Build & Run
 
-**Prerequisites**: OpenCV, MSYS2/UCRT64 (Windows)
+**Prerequisites**: OpenCV, CMake 3.10+
 
-**Build**:
+### Using CMake (Recommended):
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./main
+```
+
+### Alternative (Manual):
 ```bash
 g++ -g -IC:/msys64/ucrt64/include/opencv4 -LC:/msys64/ucrt64/lib \
-    main.cpp CImage.cpp ImageFactory.cpp Images.cpp \
-    CImageProcessing.cpp ProcessingFactory.cpp Processings.cpp \
+    src/main.cpp src/CImage.cpp src/ImageFactory.cpp src/Images.cpp \
+    src/CImageProcessing.cpp src/ProcessingFactory.cpp src/Processings.cpp \
     -o main.exe -lopencv_core -lopencv_imgproc -lopencv_imgcodecs
 ```
 
-Or use the VS Code build task: `C/C++: build project (OpenCV)`
-
 **Run**:
 ```bash
-./main.exe
+./main
 ```
 
 Enter an image path, then select operations from the menu. Processed images are saved as `filename_out.ext` and opened automatically.
